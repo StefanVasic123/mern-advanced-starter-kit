@@ -1,20 +1,35 @@
-const express = require('express')
-const colors = require('colors')
-const dotenv = require('dotenv').config()
-const { errorHandler } = require('./middleware/errorMiddleware')
-const connectDB = require('./config/db')
-const port = process.env.port || 5000
+const express = require('express');
+const dotenv = require('dotenv').config();
+const { errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
-connectDB()
+const port = process.env.PORT || 5000;
 
-const app = express()
+connectDB();
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+const app = express();
 
-app.use('/api/goals', require('./routes/goalRoutes'))
-app.use('/api/users', require('./routes/userRoutes'))
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
 
-app.use(errorHandler)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(limiter);
+app.use(helmet());
 
-app.listen(port, () => console.log(`Server started on port ${port}`))
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the API' });
+});
+
+app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
+
+app.use(errorHandler);
+
+app.listen(port, () =>
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
+);
