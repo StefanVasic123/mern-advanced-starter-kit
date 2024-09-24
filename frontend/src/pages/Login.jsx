@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
 import { FaSignInAlt } from 'react-icons/fa';
 import Spinner from '../components/Spinner';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function Login() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { translations } = useLanguage();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -59,9 +61,9 @@ function Login() {
     <>
       <section className='heading'>
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt /> {translations.login}
         </h1>
-        <p>Login and start. . .</p>
+        <p>{translations.signIn}</p>
       </section>
 
       <section className='form'>
@@ -73,7 +75,7 @@ function Login() {
               id='email'
               name='email'
               value={email}
-              placeholder='Enter your email'
+              placeholder={translations.email}
               onChange={onChange}
             />
           </div>
@@ -84,13 +86,14 @@ function Login() {
               id='password'
               name='password'
               value={password}
-              placeholder='Enter password'
+              placeholder={translations.password}
               onChange={onChange}
             />
           </div>
+
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              {translations.signIn}
             </button>
           </div>
         </form>

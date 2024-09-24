@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
@@ -12,19 +13,21 @@ function App() {
   return (
     <AuthProvider>
       <ThemeProvider>
-        <Router>
-          <div className='min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300'>
-            <Header />
-            <div className='container mx-auto px-4'>
-              <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-              </Routes>
+        <LanguageProvider>
+          <Router>
+            <div className='min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300'>
+              <Header />
+              <div className='container mx-auto px-4'>
+                <Routes>
+                  <Route path='/' element={<Dashboard />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/register' element={<Register />} />
+                </Routes>
+              </div>
             </div>
-          </div>
-        </Router>
-        <ToastContainer />
+          </Router>
+          <ToastContainer />
+        </LanguageProvider>
       </ThemeProvider>
     </AuthProvider>
   );

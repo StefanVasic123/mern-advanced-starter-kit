@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createGoal } from '../features/goals/goalSlice';
+import { useLanguage } from '../hooks/useLanguage';
 
 function GoalForm() {
   const [text, setText] = useState('');
 
   const dispatch = useDispatch();
+  const { translations } = useLanguage();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ function GoalForm() {
     <section className='form'>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label htmlFor='text'>Goal</label>
+          <label htmlFor='text'>{translations.goalText}</label>
           <input
             type='text'
             name='text'
@@ -29,7 +31,7 @@ function GoalForm() {
         </div>
         <div className='form-group'>
           <button className='btn btn-block' type='submit'>
-            Add Goal
+            {translations.addGoal}
           </button>
         </div>
       </form>

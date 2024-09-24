@@ -1,0 +1,16 @@
+{
+  "welcome": "Bienvenido",
+  "goalsDashboard": "Panel de Objetivos",
+  "login": "Iniciar Sesión",
+  "register": "Registrarse",
+  "logout": "Cerrar Sesión",
+  "noGoals": "No has establecido ningún objetivo",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "name": "Nombre",
+  "confirmPassword": "Confirmar Contraseña",
+  "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+  "dontHaveAccount": "¿No tienes una cuenta?",
+  "signUp": "Registrarse",
+  "signIn": "Iniciar Sesión"
+}

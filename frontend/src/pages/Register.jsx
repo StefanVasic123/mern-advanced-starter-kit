@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
 import { register, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ function Register() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { translations } = useLanguage();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -46,7 +48,7 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error('Passwords do not match');
+      toast.error(translations.passwordsDoNotMatch);
     } else {
       const userData = {
         name,
@@ -66,9 +68,9 @@ function Register() {
     <>
       <section className='heading'>
         <h1>
-          <FaUser /> Register
+          <FaUser /> {translations.register}
         </h1>
-        <p>Please create an accounts</p>
+        <p>{translations.createAccount}</p>
       </section>
 
       <section className='form'>
@@ -80,11 +82,10 @@ function Register() {
               id='name'
               name='name'
               value={name}
-              placeholder='Enter your name'
+              placeholder={translations.name}
               onChange={onChange}
             />
           </div>
-
           <div className='form-group'>
             <input
               type='email'
@@ -92,11 +93,10 @@ function Register() {
               id='email'
               name='email'
               value={email}
-              placeholder='Enter your email'
+              placeholder={translations.email}
               onChange={onChange}
             />
           </div>
-
           <div className='form-group'>
             <input
               type='password'
@@ -104,26 +104,24 @@ function Register() {
               id='password'
               name='password'
               value={password}
-              placeholder='Enter password'
+              placeholder={translations.password}
               onChange={onChange}
             />
           </div>
-
           <div className='form-group'>
             <input
-              type='password2'
+              type='password'
               className='form-control'
               id='password2'
               name='password2'
               value={password2}
-              placeholder='Confirm password'
+              placeholder={translations.confirmPassword}
               onChange={onChange}
             />
           </div>
-
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              {translations.signUp}
             </button>
           </div>
         </form>

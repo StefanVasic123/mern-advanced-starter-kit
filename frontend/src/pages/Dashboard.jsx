@@ -5,10 +5,12 @@ import GoalForm from '../components/GoalForm';
 import GoalItem from '../components/GoalItem';
 import Spinner from '../components/Spinner';
 import { getGoals, reset } from '../features/goals/goalSlice';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { translations } = useLanguage();
 
   const { user } = useSelector((state) => state.auth);
   const { goals, isLoading, isError, message } = useSelector(
@@ -39,9 +41,11 @@ function Dashboard() {
     <div className='py-8'>
       <section className='mb-8'>
         <h1 className='text-3xl font-bold text-gray-800 dark:text-white mb-2'>
-          Welcome {user && user.name}
+          {translations.welcome} {user && user.name}
         </h1>
-        <p className='text-gray-600 dark:text-gray-300'>Goals Dashboard</p>
+        <p className='text-gray-600 dark:text-gray-300'>
+          {translations.goalsDashboard}
+        </p>
       </section>
 
       <GoalForm />
@@ -55,7 +59,7 @@ function Dashboard() {
           </div>
         ) : (
           <h3 className='text-xl text-gray-600 dark:text-gray-300'>
-            You have not set any goals
+            {translations.noGoals}
           </h3>
         )}
       </section>

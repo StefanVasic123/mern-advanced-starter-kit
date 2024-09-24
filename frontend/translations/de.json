@@ -1,0 +1,16 @@
+{
+  "welcome": "Willkommen",
+  "goalsDashboard": "Ziele-Dashboard",
+  "login": "Anmelden",
+  "register": "Registrieren",
+  "logout": "Abmelden",
+  "noGoals": "Sie haben keine Ziele festgelegt",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "name": "Name",
+  "confirmPassword": "Passwort bestätigen",
+  "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+  "dontHaveAccount": "Sie haben noch kein Konto?",
+  "signUp": "Registrieren",
+  "signIn": "Anmelden"
+}

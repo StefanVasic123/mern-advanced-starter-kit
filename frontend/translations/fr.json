@@ -1,0 +1,16 @@
+{
+  "welcome": "Bienvenue",
+  "goalsDashboard": "Tableau de Bord des Objectifs",
+  "login": "Connexion",
+  "register": "S'inscrire",
+  "logout": "Déconnexion",
+  "noGoals": "Vous n'avez pas défini d'objectifs",
+  "email": "Email",
+  "password": "Mot de passe",
+  "name": "Nom",
+  "confirmPassword": "Confirmer le mot de passe",
+  "alreadyHaveAccount": "Vous avez déjà un compte?",
+  "dontHaveAccount": "Vous n'avez pas de compte?",
+  "signUp": "S'inscrire",
+  "signIn": "Se connecter"
+}
